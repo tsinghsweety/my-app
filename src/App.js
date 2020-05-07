@@ -1,4 +1,11 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import {Home, About, Contact} from './OtherComponents';
 import logo from './logo.svg';
 import './App.css';
 
@@ -23,17 +30,38 @@ export class App extends React.Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
         <h1>Hey </h1>
         <Welcome user = {this.state.user}/>
         <FormData handleClick={this.changeName}/>
         <h2>Other Routes</h2>
         <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
+          <li>
+            <Link to="/home">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
+
+      {/* Routing */}
+    <Switch>
+      <Route path="/about">
+        <About />
+      </Route>
+      <Route path="/contact">
+        <Contact />
+      </Route>
+      <Route path="/home">
+        <Home />
+      </Route>
+    </Switch>
+      </Router>
     );
   }
 };
