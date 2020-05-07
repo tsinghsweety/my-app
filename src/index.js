@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Router, Route, Link, browserHistory, IndexRoute } from 'react-router'
 import './index.css';
-import App from './App';
+import {App} from './App';
+import {Home, About, Contact} from './OtherComponents';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Router history = {browserHistory}>
+      <Route path = "/" component = {App}>
+         <Route path = "home" component = {Home} />
+         <Route path = "about" component = {About} />
+         <Route path = "contact" component = {Contact} />
+      </Route>
+   </Router>,
   document.getElementById('root')
 );
 
